@@ -1,0 +1,11 @@
+{
+  "module": "src/index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@automerge/automerge-repo": "^1.2.1",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
