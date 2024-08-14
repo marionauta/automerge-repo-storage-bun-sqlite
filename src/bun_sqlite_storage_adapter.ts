@@ -3,7 +3,7 @@ import type {
   StorageAdapterInterface,
   StorageKey,
 } from "@automerge/automerge-repo";
-import type { Database, Statement } from "bun:sqlite";
+import { Database, type Statement } from "bun:sqlite";
 
 interface Options {
   tableName?: string;
@@ -20,8 +20,15 @@ export class BunSqliteStorageAdapter implements StorageAdapterInterface {
   private load_range_stmt: Statement<KeyData, [Prefix]>;
   private remove_range_stmt: Statement<void, [Prefix]>;
 
-  constructor(database: Database, options?: Options) {
-    this.db = database;
+  constructor(database: string, options?: Options);
+  constructor(database: Database, options?: Options);
+  constructor(database: Database | string, options?: Options) {
+    if (typeof database === "string") {
+      this.db = new Database(database, { strict: true });
+      this.db.run("PRAGMA journal_mode=WAL;");
+    } else {
+      this.db = database;
+    }
     const tableName = options?.tableName ?? "automerge_repo_data";
     this.separator = options?.separator ?? ".";
 

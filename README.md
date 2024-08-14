@@ -10,7 +10,7 @@ import { Repo } from "@automerge/automerge-repo";
 import { BunSqliteStorageAdapter } from "@marionauta/automerge-repo-bun-sqlite";
 import Database from "bun:sqlite";
 
-const db = new Database("documents.db", { strict: true });
+const db = new Database("documents.db", { strict: true }); // strict is required
 const repo = new Repo({
   storage: new BunSqliteStorageAdapter(db),
   // ...
