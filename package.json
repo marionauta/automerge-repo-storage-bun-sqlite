@@ -1,6 +1,13 @@
 {
+  "name": "automerge-repo-storage-bun-sqlite",
+  "version": "0.1.0",
+  "description": "An automerge repo storage adapter that uses bun:sqlite to store documents.",
   "module": "src/index.ts",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marionauta/automerge-repo-storage-bun-sqlite"
+  },
   "devDependencies": {
     "@automerge/automerge-repo": "^1.2.1",
     "@types/bun": "latest"
