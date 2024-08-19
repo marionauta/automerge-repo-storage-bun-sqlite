@@ -1,6 +1,6 @@
 {
   "name": "automerge-repo-storage-bun-sqlite",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "An automerge repo storage adapter that uses bun:sqlite to store documents.",
   "type": "module",
   "module": "src/index.ts",
