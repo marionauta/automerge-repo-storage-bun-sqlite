@@ -27,6 +27,7 @@ export class BunSqliteStorageAdapter implements StorageAdapterInterface {
       this.db = new Database(database, { strict: true });
       this.db.run("PRAGMA journal_mode=WAL;");
     } else {
+      checkStrictMode(database);
       this.db = database;
     }
     const tableName = options?.tableName ?? "automerge_repo_data";
@@ -118,3 +119,12 @@ type Prefix = {
 };
 
 type KeyData = Key & Data;
+
+function checkStrictMode(db: Database) {
+  const key = "test";
+  const res = db.query<Key, Key>("select :key as key").get({ key });
+  if (res?.key !== key) {
+    const usage = `new Database("${db.filename}", { strict: true });`;
+    throw new Error(`Strict mode is required: ${usage}`);
+  }
+}
