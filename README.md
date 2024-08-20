@@ -7,7 +7,7 @@ An [automerge][automerge] [repo][automerge-repo] storage adapter that uses
 
 ```typescript
 import { Repo } from "@automerge/automerge-repo";
-import { BunSqliteStorageAdapter } from "@marionauta/automerge-repo-bun-sqlite";
+import { BunSqliteStorageAdapter } from "automerge-repo-storage-bun-sqlite";
 import Database from "bun:sqlite";
 
 const db = new Database("documents.db", { strict: true }); // strict is required
